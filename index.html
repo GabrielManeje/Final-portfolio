@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e13a71b5b0.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        :root{
+            --primart-color:rgb(240,228,228);
+            --secondary-color: #a1a4be
+        }
+
+        header{
+            background-color: #1f2235;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        header .logo-text{
+            color: var(--primart-color);
+            font-weight: 700;
+            font-size: 20px;
+            font-variant: small-caps;
+        }
+
+        header .logo-text span{
+           color: #ff4c70; 
+        }
+
+        header .navbar li{
+            display: inline-block;
+            margin: 15px;
+            padding: 10px 5px;
+        }
+
+        header .navbar li a{
+            color: var(--primart-color);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        header .navbar li a:hover{
+            border-bottom: 3px double var(--secondary-color);
+        }
+
+        header .facebook-link{
+            text-decoration: none;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header .facebook-link span{
+            color: var(--primart-color);
+            font-weight: 400;
+        }
+
+        ul.dropdown-menu{
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            list-style: none;
+            transition: 1s;
+            height: 80%;
+            width: 35px;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        ul.dropdown-menu .nav-guide{
+            color: var(--primart-color);
+            margin-right: 10px;
+        }
+
+
+        ul.dropdown-menu a .title{ 
+            margin-left: 10px;
+        }
+
+        ul.dropdown-menu:hover{
+            background-color: #1f2235;
+            width: 200px;
+        }
+
+        ul.dropdown-menu li > a, fa-house{
+            fill: var(--primart-color);
+            text-decoration: none;
+            color: var(--primart-color);
+            grid-template-columns: 40px 60px;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 5px;
+        }
+
+        ul.dropdown-menu li a{
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        ul.dropdown-menu li:hover{
+            background: #2fa32470;
+            border-left: 4px solid var(--primart-color);
+        }
+
+        header, section{
+            padding: 0 150px;
+        }
+
+        section{
+            min-height: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        section.one, section.two, section.three{
+            padding: 20px 150px;
+        }
+
+        section.one .my-image{
+            height: 100%;
+        }
+
+        section.one{
+            background-color: #23253a;
+            padding-bottom: 0;
+        }
+
+        section.one img{
+            border-bottom: 1px solid var(--secondary-color);
+            width: 500px;
+            height: 700px;
+        }
+
+        section.one .social-display{
+            margin-top: 50px;
+        }
+
+        section.one .social-display .social-links{
+            padding: 30px 0;
+        }
+
+        section.one .social-display .facebook-link span{
+            fill: var(--primart-color);
+            padding: 10px 5px;
+            text-align: center;
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        section.one .social-display .social-links span a{
+            fill: var(--primart-color);
+            transform: translateY(100px);
+        }
+
+        section.one .social-display h1{
+            color: var(--primart-color);
+            font-weight: 900;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            padding: 10px 0;
+        }
+
+        section.one .social-display p{
+            color: var(--secondary-color);
+            margin: 15px 0;
+        }
+
+        section.one .social-display .navigation{
+            margin: 40px 0;
+        }
+
+        section.one .social-display .navigation a{
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            padding: 5px 10px;
+            color: var(--primart-color);
+            border-radius: 20px;
+            text-decoration: none;
+            transition: 5s;
+        }
+
+        section.one .social-display .navigation a{
+            background-color: #8b7f0f50;
+        }
+
+        section.one .social-display .navigation a:hover{
+            background-color: #c64b68;
+        }
+
+        section.two{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #1f2235;
+        }
+
+        section.two  .service-hint{
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        section.two .service-hint span{
+            color: #c64b68;
+            font-weight: 900;
+        }
+
+        section.two .service-hint h3{
+            color: var(--primart-color);
+        }
+
+        section.two .service-hint p{
+            color: var(--secondary-color);
+        }
+        
+        section.two .service-categories{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            justify-content: center;
+            align-items: center;
+            grid-gap: 2em;
+        }
+
+        section.two .service-categories div{
+            width: 270px;
+            background: #1c1e30;
+            padding: 30px;
+        }
+
+        section.two .service-categories div:hover{
+            background-color: #c64b6850;
+        }
+        
+        section.two .service-categories div p{
+            color: var(--primart-color);
+        }
+
+        section.two .service-categories div h4{
+            color: var(--primart-color);
+            padding: 5px;
+        }
+
+        section.two .service-categories div p{
+            color: var(--primart-color);
+        }
+
+        section.three{
+            background-color: #23253a;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 0;
+        }
+
+        section.three .about-me{
+            text-align: center;
+            margin: 20px 0 40px 0;
+            background-color: #1c1e30;
+            padding: 20px 0;
+            transition: .5s;
+        }
+
+        section.three .about-me:hover{
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        section.three .about-me h1{
+            color: var(--primart-color);
+            margin: 10px 0;
+        }
+
+        section.three .about-me p{
+            color: var(--secondary-color);
+            width: 50%;
+            margin: auto;
+            text-align: center;
+        }
+
+        section.three .me{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        section.three img{
+            border-bottom: 1px solid var(--secondary-color);
+            width: 500px;
+            height: 700px;
+        }
+
+        section.three .me .details{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            background: #2c2e43;
+            padding: 0 20px;
+        }
+
+        section.three .me .details .hint h3{
+            color: var(--primart-color);
+        }
+
+        section.three .me .details .hint p{
+            margin: 10px 0;
+            color: var(--secondary-color);
+        }
+
+        section.three .me .details .contact-details{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            row-gap: 2em;
+            grid-gap: 2em;
+            margin-top: 40px;
+        }
+
+        section.three .me .details .contact-details span{
+            color: #c64b68;
+            font-weight: 700;
+            width: 70px;
+            height: 100px;
+        }
+
+        section.three .me .details .contact-details h4{
+            color: var(--primart-color);
+        }
+
+        footer{
+            background: #1c1e30;
+            color: var(--secondary-color);
+            text-align: center;
+            font-weight: 700;
+            padding: 40px 0;
+            font-family: Arial, Helvetica, sans-serif;
+            border-top: 1px solid var(--primart-color);
+        }
+
+@media (max-width: 960px) {
+    header {
+        padding: 20px 50px;
+    }
+
+    header .logo-text{
+        font-size: 30px;
+    }
+    header .navbar{
+        display: none;
+    }
+
+    header .facebook-link span{
+        display: none;
+    }
+
+    section.one .section.two .section.three{
+        padding: 0 50px;
+    }
+
+    section {
+        display: grid;
+    }
+
+    section.two{
+        padding-bottom: 10px;
+    }
+
+    section.two .service-hint{
+        margin-top: 20px;
+    }
+
+    section.two h3{
+        margin: 10px 0;
+    }
+
+    section.two .secvice-hint h3{
+        margin: 10px 0;
+    }
+
+    section.two .service-categories{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: .5em;
+        padding: 10px;
+    }
+
+    section.two .service-categories div{
+        width: 90%;
+        margin: auto;
+    }
+
+    section.three{
+        display: grid;
+    }
+
+    section.three .me{
+        display: block;
+        padding: 20px 0;
+    }
+
+    section.three .me .details .contact-details{
+        margin: auto;
+        grid-gap: 3em;
+    }
+
+    section.three .me .details{
+        padding: 14px;
+    }
+
+    section.three .me .details .hint{
+        padding: 14px;
+    }
+
+}
+    </style>
+</head>
+<body>
+    <header>
+        <a href=""class="logo-text">
+            <span>Ghabreal</span>
+        </a>
+        <ul class="navbar">
+            <li>
+                <a href="">Home</a>
+            </li>
+            <li>
+                <a href="">About</a>
+            </li>
+            <li>
+                <a href="">Services</a>
+            </li>
+            <li>
+                <a href="">Portfolio</a>
+            </li>
+            <li>
+                <a href="">Contact</a>
+            </li>
+        </ul>
+
+        <a href="" class="facebook-link">
+            <i class="fa-brands fa-facebook-f" style="color: #4267b2;"></i>
+            <span>acebook</span>
+        </a>
+    </header>
+    <ul class="dropdown-menu">
+        <span class="nav-guide">&rAarr;</span>
+        <li>
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <i class="fa-solid fa-asterisk" style="width: 21px;"></i>
+                    </span>
+                    <span class="title">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <i class="fa-solid fa-asterisk" style="width: 21px;"></i>
+                    </span>
+                    <span class="title">About</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <i class="fa-solid fa-asterisk" style="width: 21px;"></i>
+                    </span>
+                    <span class="title">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <i class="fa-solid fa-asterisk" style="width: 21px;"></i>
+                    </span>
+                    <span class="title">Portfolio</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <i class="fa-solid fa-asterisk" style="width: 21px;"></i>
+                    </span>
+                    <span class="title">Contact</span>
+                </a>
+            </li>
+        </li>
+    </ul>
+    <section class="one">
+        <div class="social-display">
+            <div class="social-links">
+                <span>
+                    <a href="" class="facebook">
+                        <i class="fa-brands fa-facebook" style="color: #1877f2;"></i>
+                    </a>
+                </span>
+                <span>
+                    <a href="" class="twitter">
+                        <i class="fa-brands fa-twitter" style="color: #1da1f2;"></i>
+                    </a>
+                </span>
+                <span>
+                    <a href="" class="instagram">
+                        <i class="fa-brands fa-instagram" style="color: #e4405f;"></i>
+                    </a>
+                </span>
+            </div>
+            <h1>I am Gabriel</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde excepturi, officiis, mollitia iure aut dolore, 
+                recusandae temporibus <br> laudantium magnam earum libero placeat est odit reprehenderit?</p>
+            <div class="navigation">
+                <a href="" class="my-portfoliio">
+                    My Portfolio
+                </a>
+            </div>
+        </div>
+        <div class="my-image">
+            <img src="https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.15752-9/281777254_769293934061434_3047434408941091345_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeHE72_rROJ7CrnzXxd9FRHWbHouRrwozflsei5GvCjN-XGoyWR_F2zz3QkXIcIxFm-K_nyzmIvW0bPuUzutbx4s&_nc_ohc=i8BATTybVXoAX_5kyOf&_nc_ht=scontent.fmnl6-1.fna&oh=03_AVKaoTzNb74jQpL0o3F1NUYP83vljWAiKRtb9-HJW2H3LA&oe=62B9329C" alt="">
+        </div>
+    </section>
+    <section class="two">
+        <div class="service-hint">
+            <span>Services</span>
+            <h3>My Services</h3>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit alias, facere vel tempore totam blanditiis!
+            </p>
+        </div>
+        <div class="service-categories" >
+            <div class="wed_development">
+                <span>
+                    <i class="fa-brands fa-github" style="font-size: 50px; color: #c64b68;"></i>
+                </span>
+                <h4>web development</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolores expedita, quo veniam perspiciatis ullam!
+                </p>
+            </div>
+            <div class="wed_design">
+                <span>
+                    <i class="fa-solid fa-display" style="font-size: 50px; color: #c64b68;"></i>
+                </span>
+                <h4>web design</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolores expedita, quo veniam perspiciatis ullam!
+                </p>
+            </div>
+            <div class="video_editing">
+                <span>
+                    <i class="fa-solid fa-film" style="font-size: 50px; color: #c64b68;"></i>
+                </span>
+                <h4>video editing</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolores expedita, quo veniam perspiciatis ullam!
+                </p>
+            </div>
+            <div class="photo_editing">
+                <span>
+                    <i class="fa-solid fa-image" style="font-size: 50px; color: #c64b68;"></i>
+                </span>
+                <h4>photo editing</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolores expedita, quo veniam perspiciatis ullam!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="three">
+        <div class="about-me">
+            <h1>Who am i</h1>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus vitae laborum, quam maxime placeat adipisci qui nemo molestias iste consequuntur.
+            </p>
+        </div>
+        <div class="me">
+            <div class="img-me">
+                <img src="https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.15752-9/281777254_769293934061434_3047434408941091345_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeHE72_rROJ7CrnzXxd9FRHWbHouRrwozflsei5GvCjN-XGoyWR_F2zz3QkXIcIxFm-K_nyzmIvW0bPuUzutbx4s&_nc_ohc=i8BATTybVXoAX_5kyOf&_nc_ht=scontent.fmnl6-1.fna&oh=03_AVKaoTzNb74jQpL0o3F1NUYP83vljWAiKRtb9-HJW2H3LA&oe=62B9329C" alt="">
+            </div>
+
+            <div class="details">
+                <div class="hint">
+                    <h3>Hi There</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet repellendus expedita assumenda alias, delectus voluptas quae aspernatur consequatur accusamus libero fuga neque iste quis debitis possimus ad vel mollitia sed!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic dolore officia soluta. Maiores, tempora quasi?
+                    </p>
+                </div>
+                <div class="contact-details">
+                    <div>
+                        <span>Name</span>
+                        <h4>Gabriel V. Maneje</h4>
+                    </div>
+                    <div>
+                        <span>Phone</span>
+                        <h4>+639 0820 24055</h4>
+                    </div>
+                    <div>
+                        <span>Email</span>
+                        <h4>clixgabriel@gmail.com</h4>
+                    </div>
+                    <div>
+                        <span>Twitter</span>
+                        <h4>Ghabreal</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span>&copy;Ghabreal-clix-gabriel</span>
+        <i class="fa-solid fa-face-grin-beam-sweat"></i>
+    </footer>
+</body>
+</html>
